@@ -36,6 +36,19 @@ int main()
   // steering and throttle PID controllers
   PID pid_s, pid_t;
   // TODO: Initialize the pid variable.
+  //pid.Init(0.03, 0.5, 0.10);
+
+
+  //pid_s.Init(0.085, 0.0003, 1.35);
+  //pid_t.Init(0.2, 0.0000, 0.01);
+
+  // twiddle update - error: 803.649
+  //pid_s.Init(0.134611 0.000276054, 3.0903);
+  //pid_t.Init(0.316731, 0.0000, 0.0228911);
+
+  // twiddle update - error: 782.494 - max throttle 0.7
+  // pid_s.Init(0.134611, 0.000270736, 3.05349);
+  // pid_t.Init(0.316731, 0.0000, 0.0226185);
 
   // twiddle update - error: ?? - max throttle 0.8
   pid_s.Init(0.134611, 0.000270736, 3.05349);
@@ -58,8 +71,10 @@ int main()
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value, throttle_value;
           /*
-          * Calcuate steering value here, remember the steering value is
+          * TODO: Calcuate steering value here, remember the steering value is
           * [-1, 1].
+          * NOTE: Feel free to play around with the throttle and speed. Maybe use
+          * another PID controller to control the speed!
           */
 
           // update error and calculate steer_value at each step
